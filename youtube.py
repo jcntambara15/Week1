@@ -4,6 +4,7 @@ import pandas as pd
 import sqlalchemy as db
 from googleapiclient.discovery import build
 
+
 def get_response(username):
 
 
@@ -15,9 +16,9 @@ def get_response(username):
         youtube_service = build(service_name, version, developerKey=Api_key)
 
         my_request = youtube_service.channels().list(
-          part = 'statistics',
-          forUsername = username)
-        return  my_request.execute()
+          part='statistics',
+          forUsername=username)
+        return my_request.execute()
     except ValueError:
         return "There is no channel associated to {username}!"
 
@@ -30,7 +31,7 @@ def create_database(response):
     try:
         data = response['items'][0]['statistics']
         df = pd.DataFrame.from_dict(
-          data, 
+          data,
           orient = 'index', 
           columns = ['channel'])
         engine = db.create_engine('sqlite:///my_youtube.db')
