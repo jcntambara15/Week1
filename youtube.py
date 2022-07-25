@@ -20,7 +20,6 @@ def get_response(username):
     except ValueError:
         return "There is no channel associated to {username}!"
 
-
 # username_example = FelixTechTips, schafer5, etc
 def create_database(response):
     """Creating the dataframe and the database in general."""
@@ -28,18 +27,17 @@ def create_database(response):
         data = response['items'][0]['statistics']
         df = pd.DataFrame.from_dict(
           data,
-          orient='index',
-          columns=['channel'])
+          orient='index', 
+          columns=['Channel'])
         engine = db.create_engine('sqlite:///my_youtube.db')
         df.to_sql('data', con=engine, if_exists='replace', index=True)
-        query_result = engine.execute("SELECT * FROM data;").fetchall()
-        return pd.DataFrame(query_result)
+        return pd.DataFrame(engine.execute("SELECT * FROM data;").fetchall())
     except KeyError:
         return "There is no items key associated with your username!"
 
 
 # Have a user input a username they want to get channel info for
-your_username = input()
+your_username = input("Enter a username")
 response = get_response(your_username)
 pprint.pprint(response)
 print(create_database(response))

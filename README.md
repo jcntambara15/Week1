@@ -1,10 +1,11 @@
-# Access Data From YouTube API
+![check.yaml](https://github.com/jcntambara15/Week1/actions/workflows/linter.yaml/badge.svg)
+# Access Data From Google API
 
 
 **Tools to be installed**
 
 
-* Python YouTube Api Library
+* Google API Library
 * panda
 * more to be added after
 

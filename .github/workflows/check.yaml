@@ -1,4 +1,4 @@
-name: Check Style
+name: CI
 on: push
 
 jobs:
@@ -15,5 +15,9 @@ jobs:
       - name: Install tools
         run: python -m pip install --upgrade pip pycodestyle
 
-      - name: Check Style
+      - name: CI
         run: pycodestyle --first *.py
+
+      - name: Test with pytest  # This is new!
+        run: |
+          python3 -m unittest youtube_testfile.py
