@@ -1,4 +1,4 @@
-![check.yaml](https://github.com/jcntambara15/Week1/actions/workflows/linter.yaml/badge.svg)
+
 # Access Data From Google API
 
 
